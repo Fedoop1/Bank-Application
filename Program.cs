@@ -41,13 +41,16 @@ namespace Bank_Application
                             break;
                         case 6:
                             isOpen = false;
-                            continue;
+                            Environment.Exit(0);
+                            break;
                         default:
+                            Console.ForegroundColor = ConsoleColor.Red;
                             Console.WriteLine("Unknown operation!");
+                            Console.ForegroundColor = baseColor;
                             break;
                     }
 
-
+                    Console.WriteLine();
                     Bank.CalculatePercantage();
                 }
                 catch(Exception ex)
@@ -111,7 +114,7 @@ namespace Bank_Application
         {
             Account[] Accounts = bank.ShowAccounts();
             
-            if(Accounts.Length >= 1)
+            if(Accounts != null)
             {
                 foreach (var account in Accounts)
                 {
